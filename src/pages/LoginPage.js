@@ -10,7 +10,7 @@ function LoginPage() {
                 <Header/>
             </header>
             <body className={'App-body'}>
-            <Login/>
+                <Login/>
             </body>
         </div>
     );

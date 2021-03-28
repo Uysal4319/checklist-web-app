@@ -1,11 +1,10 @@
 import React, {Component} from 'react';
-import {Link} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import CheckItem from "../components/CheckItem/CheckItem";
 import ReactLoading from "react-loading";
 
 
 class HomePage extends Component {
-
     constructor(props) {
         super(props);
         this.state = {
@@ -44,9 +43,7 @@ class HomePage extends Component {
 
     ]
 
-
      getItems(token ){
-
 
         fetch('https://spring-eu.herokuapp.com/findAllItem', {
             method: 'POST',
@@ -100,14 +97,16 @@ class HomePage extends Component {
 
 
     componentDidMount() {
+        const { location } = this.props
+
         fetch('https://spring-eu.herokuapp.com/authenticate', {
             method: 'POST',
             headers :{
                 Accept: 'application/json', 'Content-Type' : 'application/json',
             },
             body: JSON.stringify({
-                username : 'ertu',
-                password : 'ertu',
+                username : location.state[0].username,
+                password : location.state[0].password
             })
         } )
             .then((res)=>res.json())
@@ -157,7 +156,7 @@ class HomePage extends Component {
                 <div>
                     <nav className={'navBar'} >
                         <Link to="/home">Check List</Link>
-                        <Link to="/about">Item Ekle</Link>
+                        <Link to="/about">About</Link>
                         <Link to="/users">Users</Link>
                     </nav>
 
@@ -187,4 +186,6 @@ class HomePage extends Component {
     }
 }
 
-export default HomePage;
+
+
+export default withRouter(HomePage);
