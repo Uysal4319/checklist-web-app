@@ -15,7 +15,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 25vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,6 +24,35 @@
   color: white;
 }
 
+.App-loading {
+    background-color: yellow;
+    align-items: center;
+    justify-content: center;
+    color: white;
+}
+
+
+.App-body {
+  background-color: darkgrey;
+  min-height: 75vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(15px + 3vmin);
+  color: blue;
+}
+
+.Header-header {
+  background-color: #61dafb;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(12px + 2vmin);
+  color: blue;
+  border-radius: 10px;
+}
 .App-link {
   color: #61dafb;
 }
@@ -35,4 +64,44 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.field {
+  width: 100%;
+  border-radius: 7px;
+  font-size: calc(12px + 2vmin);
+  position: sticky;
+  color: gray;
+
+}
+.login {
+  border-radius: 5px;
+  font-size: calc(12px + 2vmin);
+  position: center;
+  background-color: #61dafb;
+  border-width: 3px;
+}
+
+.navBar {
+  background-color: oldlace;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-around;
+  color: blue;
+}
+
+.item {
+  background-color: gray;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  color: black;
+  margin: 30px;
+  border-radius: 20px;
+}
+
+.checkBox {
+  margin: 15px;
 }
