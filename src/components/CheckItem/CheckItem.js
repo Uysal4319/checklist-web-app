@@ -7,7 +7,7 @@ class CheckItem extends Component {
     render() {
 
         return (
-            <div className={'item'} onClick={this.props.select}>
+            <div className={'item'}>
                 <h2>{this.props.text}</h2>
                 <Checkbox className = {'checkBox'}/>
             </div>

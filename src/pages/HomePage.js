@@ -145,7 +145,7 @@ class HomePage extends Component {
     }
 
     selectItems(){
-        alert("elemanı seçildi")
+        // alert("elemanı seçildi")
     }
     rightClick(){
         alert("sağa tıklanı")
@@ -163,7 +163,7 @@ class HomePage extends Component {
 
                     {
                         this.checkList.map( item => {
-                                return <CheckItem select = {this.selectItems} text = {item.text}/>
+                                return <CheckItem text = {item.text}/>
                             }
 
                         )
