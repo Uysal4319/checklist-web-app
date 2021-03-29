@@ -102,6 +102,17 @@
   border-radius: 20px;
 }
 
+.selectItem {
+    background-color: red;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: black;
+    margin: 30px;
+    border-radius: 20px;
+}
+
 .checkBox {
   margin: 15px;
 }

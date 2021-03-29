@@ -3,13 +3,36 @@ import {Checkbox} from "semantic-ui-react";
 
 class CheckItem extends Component {
 
+    constructor(props) {
+        super(props);
+        this.state = {
+            checked: this.props.article.status,
+        };
+        this.selected = false;
+    }
+
+    selectItems(){
+        this.setState({ selected: !this.state.selected})
+    }
+
+    componentDidUpdate(){
+    }
 
     render() {
+        if(this.props.selected != null && this.props.selected.id === this.props.article.id){
 
+            this.selected = true;
+
+        }else {
+            this.selected = false;
+        }
         return (
-            <div className={'item'}>
-                <h2>{this.props.text}</h2>
-                <Checkbox className = {'checkBox'}/>
+            <div  className={ this.selected ? 'selectItem':'item'} onClick={this.props.onSelectedItems}>
+
+                <h2>{this.props.article.text}</h2>
+                <Checkbox className = {'checkBox'}
+                          value={this.state.checked}
+                          onValueChange={() => this.setState({ checked: !this.state.checked})}/>
             </div>
         );
     }
