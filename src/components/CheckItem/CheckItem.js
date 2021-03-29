@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Checkbox} from "semantic-ui-react";
 
-class CheckItem extends Component {
+class CheckItem extends React.Component {
 
     constructor(props) {
         super(props);
@@ -31,8 +31,9 @@ class CheckItem extends Component {
 
                 <h2>{this.props.article.text}</h2>
                 <Checkbox className = {'checkBox'}
-                          value={this.state.checked}
-                          onValueChange={() => this.setState({ checked: !this.state.checked})}/>
+                          checked={this.state.checked}
+                          onChange={() => this.setState({ checked: !this.state.checked})}
+                />
             </div>
         );
     }
