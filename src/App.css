@@ -92,7 +92,7 @@
 }
 
 .item {
-  background-color: gray;
+  background-color: #09daed;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -113,6 +113,23 @@
     border-radius: 20px;
 }
 
+.item-status {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    color: black;
+    margin: 10px;
+    border-radius: 20px;
+}
 .checkBox {
   margin: 15px;
+}
+.modal{
+    display: flex;
+    position:center;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border: 2px solid #000;
 }

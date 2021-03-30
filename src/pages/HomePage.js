@@ -11,11 +11,11 @@ class HomePage extends Component {
             checklist: [],
             token: '',
             loading: false,
-            deleteVisible :false,
             item:null,
             selected :false
         }
         this.getItems = this.getItems.bind(this);
+        this.tokenAdress = ''
     }
     checkList = [
         {
@@ -26,6 +26,7 @@ class HomePage extends Component {
     ]
 
     getItems(token) {
+        this.tokenAdress = token;
         fetch('https://spring-eu.herokuapp.com/findAllItem', {
             method: 'POST',
             headers: {
@@ -53,6 +54,7 @@ class HomePage extends Component {
             token: location.state[0].token
         })
 
+        this.tokenAdress = location.state[0].token;
         this.getItems(location.state[0].token);
     }
 
@@ -71,6 +73,34 @@ class HomePage extends Component {
         })
     }
 
+    onDeleted(item) {
+
+        console.debug(item.id);
+
+        this.setState({
+            loading: false
+        })
+
+        fetch('https://spring-eu.herokuapp.com/delete', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + this.tokenAdress
+            },
+            body: JSON.stringify({
+                id: item.id,
+                text: item.text,
+                status: item.status,
+                username: this.tokenAdress
+             }
+            )
+        }).then((res) => {
+                console.error(":Res : " + res);
+                this.getItems(this.tokenAdress)
+            })
+    }
+
     render() {
         if (this.state.loading) {
             return (
@@ -83,9 +113,12 @@ class HomePage extends Component {
 
                     {
                         this.checkList.map(item  => {
-                                return <CheckItem article={item}
-                                                  selected ={this.state.item}
-                                                  onSelectedItems ={() =>this.onSelected(item)}/>
+                            return <CheckItem article={item}
+                                              selected ={this.state.item}
+                                              onSelectedItems ={() =>this.onSelected(item)}
+                                              onDeletedItems ={() =>this.onDeleted(item)}/>
+
+
                             }
                         )
                     }
