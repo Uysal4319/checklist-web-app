@@ -15,7 +15,7 @@ class HomePage extends Component {
             selected :false
         }
         this.getItems = this.getItems.bind(this);
-        this.tokenAdress = ''
+        this.tokenAddress = ''
     }
     checkList = [
         {
@@ -26,7 +26,7 @@ class HomePage extends Component {
     ]
 
     getItems(token) {
-        this.tokenAdress = token;
+        this.tokenAddress = token;
         fetch('https://spring-eu.herokuapp.com/findAllItem', {
             method: 'POST',
             headers: {
@@ -49,13 +49,16 @@ class HomePage extends Component {
 
     componentDidMount() {
         const {location} = this.props
+        const {token} = this.props.location.state
+
+        const rightToken = location.state[0] === undefined || location.state[0] === null ? token : location.state[0].token
 
         this.setState({
-            token: location.state[0].token
+            token: rightToken
         })
 
-        this.tokenAdress = location.state[0].token;
-        this.getItems(location.state[0].token);
+        this.tokenAddress = rightToken;
+        this.getItems(rightToken);
     }
 
     selectItems() {
@@ -86,18 +89,18 @@ class HomePage extends Component {
             headers: {
                 Accept: 'application/json',
                 'Content-Type': 'application/json',
-                Authorization: 'Bearer ' + this.tokenAdress
+                Authorization: 'Bearer ' + this.tokenAddress
             },
             body: JSON.stringify({
                 id: item.id,
                 text: item.text,
                 status: item.status,
-                username: this.tokenAdress
+                username: this.tokenAddress
              }
             )
         }).then((res) => {
                 console.error(":Res : " + res);
-                this.getItems(this.tokenAdress)
+                this.getItems(this.tokenAddress)
             })
     }
 
@@ -107,7 +110,7 @@ class HomePage extends Component {
                 <div>
                     <nav className={'navBar'}>
                         <Link to="/home">Check List</Link>
-                        <Link to="/about">About</Link>
+                        <Link to={{ pathname: '/addWord', state: { token: this.tokenAddress} }}>Add Word</Link>
                         <Link to="/users">Users</Link>
                     </nav>
 

@@ -2,6 +2,7 @@ import React from "react";
 import {BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
+import AddWordPage from "./pages/AddWordPage";
 
 export default function App() {
     return (
@@ -12,8 +13,8 @@ export default function App() {
                 {/* A <Switch> looks through its children <Route>s and
             renders the first one that matches the current URL. */}
                 <Switch>
-                    <Route path="/about">
-                        <About />
+                    <Route path="/addWord">
+                        <AddWordPage />
                     </Route>
                     <Route path="/users">
                         <Users />
@@ -30,9 +31,6 @@ export default function App() {
     );
 }
 
-function About() {
-    return <h2> hakkımızda birşeyler </h2>;
-}
 
 function Users() {
     return <h2> Harbi Soft </h2>;
