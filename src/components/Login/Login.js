@@ -13,15 +13,15 @@ class Login extends Component {
             password: '',
             passed: false,
             visible: false,
-            modalVisible: false
+            modalVisible: false,
+            loading: false
         }
         this.goLogin = this.goLogin.bind(this);
         this.signUp = this.signUp.bind(this);
     }
 
     goLogin() {
-
-        this.setState({visible: true})
+        this.setState({loading: true})
         fetch('https://spring-eu.herokuapp.com/authenticate', {
             method: 'POST',
             headers: {
@@ -35,7 +35,7 @@ class Login extends Component {
             .then((res) => res.json())
             .then((res) => {
 
-                this.setState({visible: false})
+                this.setState({loading: false})
 
                 if (res.message !== "INVALID_CREDENTIALS") {
 
@@ -55,7 +55,7 @@ class Login extends Component {
     }
 
     signUp() {
-        this.setState({visible: true})
+        this.setState({loading: true})
         fetch('https://spring-eu.herokuapp.com/sign-up', {
             method: 'POST',
             headers: {
@@ -68,7 +68,7 @@ class Login extends Component {
         })
             .then((res) => {
 
-                this.setState({visible: false})
+                this.setState({loading: false})
 
                 if (res.status === 201) {
 

@@ -36,6 +36,9 @@ class AddWordPage extends Component {
             this.setState({
                 loading: false
             })
+            if (res.text() === "ITEM_EXIST"){
+                alert("Kelime Zaten Mevcut ekleme işlemi gerçekleşmedi")
+            }
         })
     }
 
