@@ -111,8 +111,7 @@ class HomePage extends Component {
         this.setState({
             loading: false
         })
-        fetch('http://localhost:8080/updateItem', {
-        // fetch('https://spring-eu.herokuapp.com/updateItem', {
+        fetch('https://spring-eu.herokuapp.com/updateItem', {
             method: 'POST',
             headers: {
                 Accept: 'application/json',
