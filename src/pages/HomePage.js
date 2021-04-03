@@ -104,6 +104,34 @@ class HomePage extends Component {
             })
     }
 
+    onUpdated(item) {
+
+        console.debug(item.id);
+
+        this.setState({
+            loading: false
+        })
+        fetch('http://localhost:8080/updateItem', {
+        // fetch('https://spring-eu.herokuapp.com/updateItem', {
+            method: 'POST',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                Authorization: 'Bearer ' + this.tokenAddress
+            },
+            body: JSON.stringify({
+                    id: item.id,
+                    text: item.text,
+                    status: item.status,
+                    username: this.tokenAddress
+                }
+            )
+        }).then((res) => {
+            console.error(":Res : " + res);
+            this.getItems(this.tokenAddress)
+        })
+    }
+
     render() {
         if (this.state.loading) {
             return (
@@ -119,7 +147,8 @@ class HomePage extends Component {
                             return <CheckItem article={item}
                                               selected ={this.state.item}
                                               onSelectedItems ={() =>this.onSelected(item)}
-                                              onDeletedItems ={() =>this.onDeleted(item)}/>
+                                              onDeletedItems ={() =>this.onDeleted(item)}
+                                              onUpdatedItem={() =>this.onUpdated(item)}/>
 
 
                             }

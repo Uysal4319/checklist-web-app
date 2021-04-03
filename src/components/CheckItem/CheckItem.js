@@ -3,6 +3,8 @@ import {Checkbox} from "semantic-ui-react";
 import IconButton from '@material-ui/core/IconButton';
 import DeleteIcon from '@material-ui/icons/Delete';
 import Modal from '@material-ui/core/Modal';
+import CachedIcon from '@material-ui/icons/Cached';
+
 
 class CheckItem extends React.Component {
 
@@ -22,12 +24,14 @@ class CheckItem extends React.Component {
     }
 
     componentDidUpdate(){
+        if(this.state.checked === true){
+            this.props.article.status = true;
+        }else if(this.state.checked ===false){
+            this.props.article.status = false;
+        }
     }
 
     deleteTask() {
-        // const messages = this.state.messages.filter((_, index) => index !== i)
-        // this.setState({ messages });
-
         {
             this.setState({
                 modalVisible :false
@@ -83,6 +87,10 @@ class CheckItem extends React.Component {
                  <IconButton aria-label="delete"
                              onClick={() => {this.openModal()}}>
                      <DeleteIcon />
+                 </IconButton>
+                 <IconButton aria-label="refresh"
+                             onClick={this.props.onUpdatedItem}>
+                     <CachedIcon />
                  </IconButton>
              </div>
             </div>
