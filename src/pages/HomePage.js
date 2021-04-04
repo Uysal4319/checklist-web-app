@@ -15,6 +15,7 @@ class HomePage extends Component {
             selected :false
         }
         this.getItems = this.getItems.bind(this);
+        this.onDeleted = this.onDeleted.bind(this);
         this.tokenAddress = ''
     }
     checkList = [
@@ -80,10 +81,11 @@ class HomePage extends Component {
 
         console.debug(item.id);
 
-        this.setState({
-            loading: false
-        })
-
+        {
+            this.setState({
+                loading: false
+            })
+        }
         fetch('https://spring-eu.herokuapp.com/delete', {
             method: 'POST',
             headers: {

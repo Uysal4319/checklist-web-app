@@ -80,6 +80,7 @@
   position: center;
   background-color: #61dafb;
   border-width: 3px;
+  margin: 10px;
 }
 
 .navBar {
@@ -129,6 +130,7 @@
 }
 .modal{
     display: flex;
+    flex-direction: column;
     position:center;
     align-items: center;
     justify-content: center;

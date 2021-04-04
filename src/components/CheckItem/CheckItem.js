@@ -64,10 +64,11 @@ class CheckItem extends React.Component {
                 >
                     <div className={'modal'}>
 
-                        <h1> model</h1>
-                        <div className={'item-status'}>
-                            <button onClick={() => {this.deleteTask()}}>Silme</button>
-                            <button onClick={this.props.onDeletedItems}>Sil</button>
+                        <h1> Silinsin mi ? </h1>
+                        <div>
+
+                            <button className={'login'} onClick={() => {this.deleteTask()}}>Silme</button>
+                            <button className={'login'} onClick={this.props.onDeletedItems}>Sil</button>
 
                         </div>
 
