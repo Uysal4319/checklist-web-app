@@ -98,8 +98,9 @@
   align-items: center;
   justify-content: space-between;
   color: black;
-  margin: 30px;
+  margin: 10px;
   border-radius: 20px;
+  height: 40px;
 }
 
 .selectItem {
@@ -109,8 +110,9 @@
     align-items: center;
     justify-content: space-between;
     color: black;
-    margin: 30px;
+    margin: 10px;
     border-radius: 20px;
+    height: 50px;
 }
 
 .item-status {
@@ -119,11 +121,11 @@
     align-items: center;
     justify-content: space-between;
     color: black;
-    margin: 10px;
     border-radius: 20px;
+    margin: 3px;
 }
 .checkBox {
-  margin: 15px;
+  margin: 5px;
 }
 .modal{
     display: flex;

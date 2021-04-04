@@ -74,7 +74,9 @@ class CheckItem extends React.Component {
                     </div>
                 </Modal>
 
-                <h2>{this.props.article.text}</h2>
+            <div style={{marginLeft : "10px"}}>
+                <h4>{this.props.article.text}</h4>
+            </div>
 
 
              <div className={'item-status'}>
@@ -84,11 +86,13 @@ class CheckItem extends React.Component {
                            onChange={() => this.setState({ checked: !this.state.checked})}
 
                  />
-                 <IconButton aria-label="delete"
+                 <IconButton className = {'checkBox'}
+                             aria-label="delete"
                              onClick={() => {this.openModal()}}>
-                     <DeleteIcon />
+                     <DeleteIcon className = {'checkBox'} />
                  </IconButton>
-                 <IconButton aria-label="refresh"
+                 <IconButton className = {'checkBox'}
+                             aria-label="refresh"
                              onClick={this.props.onUpdatedItem}>
                      <CachedIcon />
                  </IconButton>

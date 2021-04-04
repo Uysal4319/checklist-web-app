@@ -33,5 +33,5 @@ export default function App() {
 
 
 function Users() {
-    return <h2> Harbi Soft </h2>;
+    return <h2> Hakkımızda birşeyler </h2>;
 }
