@@ -10,7 +10,7 @@ class HomePage extends Component {
         this.state = {
             checklist: [],
             token: '',
-            loading: false,
+            loading: true,
             item:null,
             selected :false
         }
@@ -42,7 +42,7 @@ class HomePage extends Component {
                 console.error(":Res : " + res);
                 this.checkList = res;
                 this.setState({
-                    loading: true
+                    loading: false
                 })
             })
     }
@@ -83,7 +83,7 @@ class HomePage extends Component {
 
         {
             this.setState({
-                loading: false
+                loading: true
             })
         }
         fetch('https://spring-eu.herokuapp.com/delete', {
@@ -111,7 +111,7 @@ class HomePage extends Component {
         console.debug(item.id);
 
         this.setState({
-            loading: false
+            loading: true
         })
         fetch('https://spring-eu.herokuapp.com/updateItem', {
             method: 'POST',
@@ -134,13 +134,13 @@ class HomePage extends Component {
     }
 
     render() {
-        if (this.state.loading) {
+        if (!this.state.loading) {
             return (
                 <div>
                     <nav className={'navBar'}>
                         <Link to="/home">Check List</Link>
                         <Link to={{ pathname: '/addWord', state: { token: this.tokenAddress} }}>Add Word</Link>
-                        <Link to="/users">Users</Link>
+                        <Link to="/about">About</Link>
                     </nav>
 
                     {

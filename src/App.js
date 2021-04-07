@@ -16,7 +16,7 @@ export default function App() {
                     <Route path="/addWord">
                         <AddWordPage />
                     </Route>
-                    <Route path="/users">
+                    <Route path="/about">
                         <Users />
                     </Route>
                     <Route path="/home">

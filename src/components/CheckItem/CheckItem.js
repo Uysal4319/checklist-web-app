@@ -17,6 +17,7 @@ class CheckItem extends React.Component {
         this.selected = false;
         this.deleteTask = this.deleteTask.bind(this)
         this.openModal = this.openModal.bind(this)
+        this.statusChange = this.statusChange.bind(this)
     }
 
     selectItems(){
@@ -45,6 +46,14 @@ class CheckItem extends React.Component {
                 modalVisible :true
             })
         }
+    }
+    statusChange(){
+        {
+            this.setState({ checked: !this.state.checked})
+            this.props.article.status = !this.state.checked;
+        }
+
+        this.props.onUpdatedItem()
     }
     render() {
         if(this.props.selected != null && this.props.selected.id === this.props.article.id){
@@ -84,7 +93,7 @@ class CheckItem extends React.Component {
 
                  <Checkbox className = {'checkBox'}
                            checked={this.state.checked}
-                           onChange={() => this.setState({ checked: !this.state.checked})}
+                           onChange={() => this.statusChange() }
 
                  />
                  <IconButton className = {'checkBox'}
@@ -92,11 +101,12 @@ class CheckItem extends React.Component {
                              onClick={() => {this.openModal()}}>
                      <DeleteIcon className = {'checkBox'} />
                  </IconButton>
-                 <IconButton className = {'checkBox'}
-                             aria-label="refresh"
-                             onClick={this.props.onUpdatedItem}>
-                     <CachedIcon />
-                 </IconButton>
+
+                 {/*<IconButton className = {'checkBox'}*/}
+                 {/*            aria-label="refresh"*/}
+                 {/*            onClick={this.props.onUpdatedItem}>*/}
+                 {/*    <CachedIcon />*/}
+                 {/*</IconButton>*/}
              </div>
             </div>
         );

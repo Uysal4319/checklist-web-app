@@ -19,9 +19,16 @@ class AddWordPage extends Component {
 
 
     addItems() {
+
+        if(this.state.itemText === null || this.state.itemText.trim() === ''){
+            alert("Boş eleman eklenemez")
+            return;
+        }
+
         this.setState({
             loading: true
         })
+
         const tokenBody = this.state.itemText + '&&' + this.tokenAdress;
         fetch('https://spring-eu.herokuapp.com/addItem', {
             method: 'POST',
@@ -31,13 +38,16 @@ class AddWordPage extends Component {
                 Authorization: 'Bearer ' + this.tokenAdress
             },
             body: tokenBody
-        }).then((res) => {
+        })  .then((res) => res.text())
+            .then((res) => {
             console.error(":Res : " + res);
             this.setState({
                 loading: false
             })
-            if (res.text() === "ITEM_EXIST"){
-                alert("Kelime Zaten Mevcut ekleme işlemi gerçekleşmedi")
+            if (res === "ITEM_EXIST"){
+                alert("Eleman Zaten Mevcut ekleme işlemi gerçekleşmedi")
+            }else if(res.startsWith("added")){
+                alert("Eleman eklendi")
             }
         })
     }
@@ -60,7 +70,7 @@ class AddWordPage extends Component {
                     <nav className={'navBar'}>
                         <Link to={{ pathname: '/home', state: { token: this.state.token} }}>Check List</Link>
                         <Link to={{ pathname: '/addWord', state: { token: this.tokenAddress} }}>Add Word</Link>
-                        <Link to="/users">Users</Link>
+                        <Link to="/about">About</Link>
                     </nav>
                     <div style={{
                         position: 'absolute', left: '50%', top: '50%',
