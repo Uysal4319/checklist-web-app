@@ -102,7 +102,7 @@ class Login extends Component {
                         value={this.state.password}
                     />
 
-                    <button className={'login'} onClick={this.goLogin}> Login </button>
+                        <button className={'login'} onClick={this.goLogin}> Login </button>
                     <button className={'login'} onClick={this.signUp}>  SignUp </button>
 
                     {/*<NavLink className={'login'} to="/home" >Login!</NavLink>*/}
@@ -118,9 +118,7 @@ class Login extends Component {
                     <ReactLoading className={'loading'} type="bars" color="gray"/>
                 </div>
             );
-
         }
-
     }
 }
 

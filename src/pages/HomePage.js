@@ -17,7 +17,7 @@ class HomePage extends Component {
         this.getItems = this.getItems.bind(this);
         this.onDeleted = this.onDeleted.bind(this);
         this.tokenAddress = ''
-    }
+    }   
     checkList = [
         {
             text : 'Hello World 1 ',
